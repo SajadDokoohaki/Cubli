@@ -36,7 +36,15 @@ D = 0 ;
 [NUM, DEN] = ss2tf(A,B,C,D);
 H =  tf(round(NUM,4), round(DEN,4))
 K_p = 4.45;
+
+G_c = tf([1 1], [1 0.05]);
 rlocus(H)
+figure;
+
+rlocus(G_c * H)
+figure;
+
+step(G_c*H)
 figure;
 %% Hand-Derived
 theta_b_t0 = pi/100 ;
